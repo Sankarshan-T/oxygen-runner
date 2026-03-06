@@ -1,43 +1,39 @@
 [gd_scene format=3 uid="uid://dtedhs1n3k6mq"]
 
-[ext_resource type="Script" uid="uid://1wlielnjp5wi" path="res://scenes/levels/character_body_3d.gd" id="2_6iamk"]
-[ext_resource type="MeshLibrary" uid="uid://bc2jqijrfi01b" path="res://tiles.tres" id="2_nsrm0"]
+[ext_resource type="Texture2D" uid="uid://dtplgut85t7r8" path="res://assets/space.jpg" id="1_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://brd5bwyxiuu2x" path="res://scenes/player.tscn" id="2_6iamk"]
+[ext_resource type="MeshLibrary" uid="uid://rjue18uo8688" path="res://tilesnew.tres" id="3_nsrm0"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ksju7"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nsrm0"]
+panorama = ExtResource("1_nsrm0")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6iamk"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ksju7"]
-
-[sub_resource type="Sky" id="Sky_6iamk"]
-sky_material = SubResource("ProceduralSkyMaterial_ksju7")
+[sub_resource type="Sky" id="Sky_nsrm0"]
+sky_material = SubResource("PanoramaSkyMaterial_nsrm0")
 
 [sub_resource type="Environment" id="Environment_nsrm0"]
 background_mode = 2
-sky = SubResource("Sky_6iamk")
+sky = SubResource("Sky_nsrm0")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.4
+glow_enabled = true
 
 [node name="level1" type="Node3D" unique_id=2109227148]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1759791253]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0107708, 1.4484382, 2.0720258)
-script = ExtResource("2_6iamk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=211965188]
-shape = SubResource("CapsuleShape3D_ksju7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1045244055]
-mesh = SubResource("CapsuleMesh_6iamk")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=715044679]
-transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 2.9377794, 1.986465)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1420531517]
 environment = SubResource("Environment_nsrm0")
 
+[node name="Player" parent="." unique_id=192632232 instance=ExtResource("2_6iamk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -5)
+
 [node name="GridMap" type="GridMap" parent="." unique_id=706509461]
-mesh_library = ExtResource("2_nsrm0")
+mesh_library = ExtResource("3_nsrm0")
 cell_size = Vector3(4, 4, 4)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(0, 0, 1048627, 0, 1, 1048627, 0, 2, 1048627, 0, 3, 1048627, 0, 4, 1048627, 0, 5, 1048627, 0, 65535, 1048627, 0, 65534, 1048627, 0, 65533, 1048627, 0, 65532, 1048627)
+"cells": PackedInt32Array(65533, 0, 51, 65532, 0, 51, 65531, 0, 51, 65530, 0, 51, 3, 0, 51, 4, 0, 51, 5, 0, 51, 6, 0, 51, 7, 0, 51, 0, 65533, 1441843, 0, 65532, 1441843, 0, 65531, 1441811, 0, 65530, 1441843, 0, 65529, 1441794, 0, 65528, 1441843, 0, 65527, 1441843, 0, 3, 1441811, 0, 4, 1441843, 0, 5, 1048578, 0, 6, 1441843, 0, 7, 1441843, 0, 8, 1441843, 0, 9, 1441843, 10, 0, 62, 0, 11, 62, 0, 65525, 62, 65527, 0, 62, 10, 65534, 1441834, 0, 65523, 1441834, 65527, 65534, 1441834, 3, 65525, 655402, 3, 11, 655402, 13, 0, 655402, 10, 2, 1048618, 0, 13, 1048618, 65527, 2, 1048618, 65533, 65525, 42, 65533, 11, 42, 65524, 0, 42, 117, 65465, 1441810, 0, 65535, 1441809, 65532, 65535, 1441811, 4, 65535, 1441811, 65532, 65533, 1441794, 4, 65533, 1441794, 6, 65535, 655362, 2, 65531, 655362, 2, 3, 655362, 65532, 1, 1048578, 4, 1, 1048578, 65534, 65531, 2, 65530, 65535, 2, 65534, 3, 2)
 }
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1389707554]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 22, 0)
+light_energy = 3.0
+shadow_enabled = true
