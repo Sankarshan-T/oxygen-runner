@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dtedhs1n3k6mq"]
+
+[ext_resource type="Script" uid="uid://1wlielnjp5wi" path="res://scenes/levels/character_body_3d.gd" id="2_6iamk"]
+[ext_resource type="MeshLibrary" uid="uid://bc2jqijrfi01b" path="res://tiles.tres" id="2_nsrm0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ksju7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6iamk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ksju7"]
+
+[sub_resource type="Sky" id="Sky_6iamk"]
+sky_material = SubResource("ProceduralSkyMaterial_ksju7")
+
+[sub_resource type="Environment" id="Environment_nsrm0"]
+background_mode = 2
+sky = SubResource("Sky_6iamk")
+
+[node name="level1" type="Node3D" unique_id=2109227148]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1759791253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0107708, 1.4484382, 2.0720258)
+script = ExtResource("2_6iamk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=211965188]
+shape = SubResource("CapsuleShape3D_ksju7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1045244055]
+mesh = SubResource("CapsuleMesh_6iamk")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=715044679]
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 2.9377794, 1.986465)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1420531517]
+environment = SubResource("Environment_nsrm0")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=706509461]
+mesh_library = ExtResource("2_nsrm0")
+cell_size = Vector3(4, 4, 4)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 1048627, 0, 1, 1048627, 0, 2, 1048627, 0, 3, 1048627, 0, 4, 1048627, 0, 5, 1048627, 0, 65535, 1048627, 0, 65534, 1048627, 0, 65533, 1048627, 0, 65532, 1048627)
+}
